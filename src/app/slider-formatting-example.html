@@ -1,0 +1,96 @@
+<div class="toolbar" style="width: 100%">
+  <section>
+    <div class="example-button-row">
+      <div class="example-flex-container">
+        <button
+          mat-icon-button
+          aria-label="rotate left"
+          (click)="rotateView('left')"
+        >
+          <mat-icon>rotate_90_degrees_ccw</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          aria-label="rotate right"
+          (click)="rotateView('right')"
+        >
+          <mat-icon>rotate_90_degrees_cw</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          [disabled]="disabledZoomOut"
+          aria-label="zoom out"
+          (click)="zoomView('out')"
+        >
+          <mat-icon>zoom_out</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          [disabled]="disabledZoomIn"
+          aria-label="zoom in"
+          (click)="zoomView('in')"
+        >
+          <mat-icon>zoom_in</mat-icon>
+        </button>
+
+        <!-- <button
+          mat-icon-button
+          [disabled]="disabledScreenFit"
+          aria-label="screen fit"
+          (click)="screenView('fit')"
+        >
+          <mat-icon>fullscreen</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          [disabled]="disabledScreenNoFit"
+          aria-label="screen no fit"
+          (click)="screenView('noFit')"
+        >
+          <mat-icon>close_fullscreen</mat-icon>
+        </button> -->
+
+        <button
+          mat-icon-button
+          [disabled]="disabledPageW"
+          aria-label="page no width"
+          (click)="pageView('page-width')"
+        >
+          <mat-icon class="rotate-90">expand</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          [disabled]="disabledPageH"
+          aria-label="page height"
+          (click)="pageView('page-height')"
+        >
+          <mat-icon>expand</mat-icon>
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="outerContainer">
+  <div class="pdf-container">
+    <pdf-viewer
+      #pdfViewer
+      [src]="src"
+      [rotation]="rotation"
+      [show-all]="true"
+      [(page)]="currentPage"
+      [fit-to-page]="true"
+      [zoom]="zoom"
+      [original-size]="false"
+      [zoom-scale]="zoomScale"
+      [stick-to-page]="false"
+      [render-text]="true"
+      [render-text-mode]="0"
+      [external-link-target]="'blank'"
+      [autoresize]="true"
+      [show-borders]="true"
+      style="width: 100vw; height: calc(100vh - 40px)"
+    ></pdf-viewer>
+  </div>
+</div>

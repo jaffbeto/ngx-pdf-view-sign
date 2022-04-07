@@ -7,7 +7,10 @@ import {
 } from '@angular/core';
 import * as pdfjsLib from 'pdfjs-dist';
 // import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry';
-import { TypedArray,DocumentInitParameters } from 'pdfjs-dist/types/src/display/api';
+import {
+  TypedArray,
+  DocumentInitParameters,
+} from 'pdfjs-dist/types/src/display/api';
 // import { getDocument } from 'pdfjs-dist/types/src/display/api';
 // import { PDFViewer } from 'pdfjs-dist/types/web/pdf_viewer.component';
 // import { PdfViewerComponent } from 'ng2-pdf-viewer';
@@ -113,13 +116,21 @@ export class SliderFormattingExample implements OnInit {
     // console.log(this._PDFView.page);
   }
 
-  async getPDF(path: string|URL|TypedArray|pdfjsLib.PDFDataRangeTransport|DocumentInitParameters) {
+  async getPDF(
+    path:
+      | string
+      | URL
+      | TypedArray
+      | pdfjsLib.PDFDataRangeTransport
+      | DocumentInitParameters
+  ) {
     // const pdfjs = await import('pdfjs-dist/build/pdf');
-    // const pdfjsWorker = await import('pdfjs-dist/build/pdf.js');
-    pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
+    // const pdfjsWorker = await import('pdfjs-dist/build/pdf.worker.js');
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      '//mozilla.github.io/pdf.js/build/pdf.worker.js';
     const loadingTask = pdfjsLib.getDocument(path);
     loadingTask.promise.then((pdf: any) => {
-    console.log(pdf);
+      console.log(pdf);
     });
     // pdfjsLib.getDocument(path).promise.then((_pdf) => {
     //   let total = _pdf.numPages;
